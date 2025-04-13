@@ -16,6 +16,6 @@ namespace SmartInventory.Models
         
         public decimal TotalAmount { get; set; }
         
-        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+        public ICollection<OrderItems> OrderItems { get; set; } = new List<OrderItems>();
     }
 }

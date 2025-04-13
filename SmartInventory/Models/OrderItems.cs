@@ -2,7 +2,7 @@
 
 namespace SmartInventory.Models
 {
-    public class OrderItem
+    public class OrderItems
     {
         [Key]
         public int OrderItemId { get; set; }

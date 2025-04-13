@@ -12,7 +12,7 @@ namespace SmartInventory.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "Do you Remember Me?")]
+        [Display(Name = "Remember Me?")]
         public bool RememberMe { get; set; }
     }
 }
