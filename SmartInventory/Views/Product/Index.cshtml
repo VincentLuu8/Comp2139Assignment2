@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SmartInventory.Models.Product>
+
+@{
+ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+
+<form id="searchForm" method="get" action="@Url.Action("Index", "Product")">
+    <div class="form-group">
+        <label for="searchString">Search:</label>
+        <input type="text" id="searchString" name="searchString" value="@ViewData["SearchString"]" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<hr />
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody id="productList">
+    @foreach (var product in Model)
+    {
+    <tr>
+        <td>@product.Name</td>
+        <td>@product.Category</td>
+        <td>@product.Price</td>
+        <td>@product.Stock</td>
+        <td>
+            <a href="@Url.Action("Edit", "Product", new { id = product.Id })" class="btn btn-warning">Edit</a>
+            <a href="@Url.Action("Delete", "Product", new { id = product.Id })" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
+
+<div id="productListPartial"></div>
+
+@section Scripts {
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#searchForm').submit(function (event) {
+            event.preventDefault();
+
+            var searchString = $('#searchString').val();
+
+            $.ajax({
+                url: '@Url.Action("Index", "Product")',
+                type: 'GET',
+                data: { searchString: searchString },
+                success: function (data) {
+                    $('#productList').html(data);
+                }
+            });
+        });
+    });
+</script>
+}

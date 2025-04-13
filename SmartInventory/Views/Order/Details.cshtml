@@ -1,0 +1,32 @@
+﻿@model SmartInventory.Models.Order
+
+<h2>Order Details</h2>
+
+<h4>Order ID: @Model.OrderId</h4>
+<p>Order Date: @Model.OrderDate</p>
+<p>Total Amount: @Model.TotalAmount</p>
+
+<h3>Order Items</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.OrderItems)
+    {
+    <tr>
+        <td>@item.Product.Name</td>
+        <td>@item.Quantity</td>
+        <td>@item.Price</td>
+        <td>@item.Total</td>
+    </tr>
+    }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Index", "Order")" class="btn btn-primary">Back to Orders</a>

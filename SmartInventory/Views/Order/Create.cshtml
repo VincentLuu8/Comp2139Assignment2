@@ -1,0 +1,12 @@
+﻿@model SmartInventory.Models.Order
+
+<h2>Create Order</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label for="OrderDate">Order Date</label>
+        <input type="date" class="form-control" id="OrderDate" name="OrderDate" value="@Model.OrderDate.ToString("yyyy-MM-dd")" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Create Order</button>
+</form>

@@ -1,0 +1,16 @@
+﻿@model SmartInventory.Models.Product
+
+@{
+ViewData["Title"] = "Product Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h3>@Model.Name</h3>
+    <p>Category: @Model.Category</p>
+    <p>Price: @Model.Price</p>
+    <p>Stock: @Model.Stock</p>
+</div>
+
+<a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
